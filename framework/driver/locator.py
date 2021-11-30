@@ -1,0 +1,2 @@
+class Locator(str):
+    pass

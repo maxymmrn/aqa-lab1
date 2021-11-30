@@ -1,3 +1,5 @@
+from typing import List
+
 from selenium.webdriver.remote.webelement import WebElement
 
 
@@ -25,5 +27,14 @@ class Asserter:
         assert expected_color in color_property, Asserter._err_message(expected_color, color_property)
 
     @staticmethod
-    def _err_message(expected: str, actual: str):
+    def assert_label_changed(before: str, after: str):
+        assert before != after, f"Label didn't changed: {before} == {after}"
+
+    @staticmethod
+    def assert_elements_number(elements: List[WebElement], min_length: int):
+        actual_length = len(elements)
+        assert actual_length >= min_length, Asserter._err_message(min_length, actual_length)
+
+    @staticmethod
+    def _err_message(expected, actual):
         return f'Expected {expected}, got {actual} instead'
