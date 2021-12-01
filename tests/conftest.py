@@ -6,6 +6,7 @@ from framework.pages.board_games_page import BoardGamesPage
 from framework.pages.cart_page import CartPage
 from framework.pages.cart_popup import CartPopup
 from framework.pages.home_page import HomePage
+from framework.pages.paper_chooser_popup import PaperChooserPopup
 
 
 @fixture
@@ -33,3 +34,8 @@ def cart_popup(_connection):
 @fixture
 def cart_page(_connection):
     return CartPage(_connection)
+
+
+@fixture
+def paper_chooser_popup(_connection):
+    return PaperChooserPopup(_connection)

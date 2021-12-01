@@ -36,5 +36,19 @@ class Asserter:
         assert actual_length >= min_length, Asserter._err_message(min_length, actual_length)
 
     @staticmethod
+    def assert_input_placeholder(input_field: WebElement, expected_placeholder: str):
+        actual_text = input_field.get_attribute('placeholder')
+        assert actual_text == expected_placeholder, Asserter._err_message(expected_placeholder, actual_text)
+
+    @staticmethod
+    def assert_input(input_field: WebElement, expected_text: str):
+        actual_text = input_field.get_attribute('value')
+        assert actual_text == expected_text, Asserter._err_message(expected_text, actual_text)
+
+    @staticmethod
+    def assert_is_selected(element: WebElement, is_selected: bool = True):
+        assert element.is_selected() == is_selected, Asserter._err_message(is_selected, element.is_selected())
+
+    @staticmethod
     def _err_message(expected, actual):
         return f'Expected {expected}, got {actual} instead'
