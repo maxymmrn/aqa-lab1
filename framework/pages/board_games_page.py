@@ -44,7 +44,7 @@ class BoardGamesPage(BasePage):
             button = self._connection.wait_for_element(locator)
             yield button
             previous_button = self._connection.wait_for_element(locator)
-            Asserter.assert_element_text(previous_button, 'Купити')
+            Asserter.assert_element_text_one_of(previous_button, ['Купити', 'Передзамовити'])
 
     def move_players_number_filter(self, dx: int):
         before_number = self.get_players_number_from_filter().text

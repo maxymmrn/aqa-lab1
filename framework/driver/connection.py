@@ -20,10 +20,10 @@ class Connection:
     def _set_up(self):
         self._driver.get('https://octopus.in.ua/')
         self._driver.implicitly_wait(5)
-        self._driver.set_window_size(1920, 1080)
+        #self._driver.set_window_size(1920, 1080)
 
     def get_element(self, locator: Locator) -> WebElement:
-        return self._driver.find_element_by_xpath(locator)
+        return self._driver.find_element(By.XPATH, locator)
 
     def wait_for_element(self, locator: Locator, timeout: int = 5) -> WebElement:
         return WebDriverWait(self._driver, timeout).until(ec.presence_of_element_located((By.XPATH, locator)))

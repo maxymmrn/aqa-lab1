@@ -17,8 +17,12 @@ def singleton(cls):
 class Asserter:
 
     @staticmethod
-    def assert_element_text(button: WebElement, text):
+    def assert_element_text(button: WebElement, text: str):
         assert button.text == text, Asserter._err_message(text, button.text)
+
+    @staticmethod
+    def assert_element_text_one_of(button: WebElement, texts: List[str]):
+        assert button.text in texts, Asserter._err_message(texts, button.text)
 
     @staticmethod
     def assert_language_is_selected(language_button: WebElement):
